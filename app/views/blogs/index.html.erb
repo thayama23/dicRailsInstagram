@@ -1,0 +1,25 @@
+<h1>Blog一覧</h1>
+
+<p><%= notice %></p>
+
+<div align = "center">
+<table>
+  <tr>
+    <th>内容</th>
+  </tr>
+
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.content %></td>
+
+      <td><%= link_to '詳細を確認する', mutter_path(blog.id) %></td>
+      <td><%= link_to "Mutterを編集する", edit_mutter_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+
+      <td><%= link_to 'Mutterを削除する', mutter_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<br>
+<%= link_to '新しくMutterを投稿する', new_mutter_path %>
