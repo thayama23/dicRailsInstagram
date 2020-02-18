@@ -1,17 +1,14 @@
 class ImageUploader < CarrierWave::Uploader::Base
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
-
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
-
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
+  include CarrierWave::MiniMagick
+   # MiniMagickをincludeすると画像サイズ調整ができるようになる
+  storage :file # 保存形式の設定。他に使うものとしてはfog形式などがある。
+  process :resize_to_limit => [50, 50] # 画像サイズの調整
+  # 画像ファイルの保存先の設定
+  # 保存先を指定するには `store_dir` というメソッドに定義します。
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -44,4 +41,3 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-end

@@ -23,7 +23,15 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    @blog = current_user.blogs.build
+    # @blog = Blog.new
+
+    # if params[:back]
+    #   @feed = Feed.new(feed_params)
+    # else
+    #   @feed = Feed.new
+    # end
+
   end
 
   def edit
@@ -49,12 +57,12 @@ class BlogsController < ApplicationController
     # @blog = Blog.new(blog_params)
     # @blog.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
 
-    
+
   end
 
   private
   def blog_params
-   params.require(:blog).permit(:title, :content)
+   params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
 
   def set_blog
