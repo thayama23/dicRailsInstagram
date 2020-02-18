@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
 
-  
+
   end
 
   def show
@@ -48,6 +48,8 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
     # @blog = Blog.new(blog_params)
     # @blog.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+
+    
   end
 
   private
