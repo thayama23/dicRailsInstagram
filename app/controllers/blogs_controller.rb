@@ -22,6 +22,7 @@ class BlogsController < ApplicationController
     else
       @blog = current_user.blogs.build
     end
+
   end
 
   def create
