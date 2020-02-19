@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = current_user.blogs.build
+    # @blog = current_user.blogs.build
     # @blog = Blog.new
 
     # if params[:back]
@@ -17,6 +17,11 @@ class BlogsController < ApplicationController
     # else
     #   @feed = Feed.new
     # end
+    if current_user == nil
+      redirect_to new_user_path, notice: "ログインするか新規ユーザー設定後Blogをご使用下さい。"
+    else
+      @blog = current_user.blogs.build
+    end
   end
 
   def create
