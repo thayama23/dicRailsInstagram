@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def new
@@ -26,16 +27,25 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.build(blog_params)
+    @blog = current_user.blogs.build(blog_params) #これは、blog new - @blog = Blog.new(blog_params)　とほとんど同じ。However, by writing the first way, the app knows at this stage, what criteria has been populated.
     if params[:back]
       render :new
     else
       if @blog.save
+        BlogMailer.blog_mail(@blog).deliver ##
         redirect_to blogs_path, notice: "ブログを作成しました！"
       else
         render :new
       end
     end
+
+    # @blog = Blog.new(blog_params)
+    # if @blog.save
+    #   BlogMailer.blog_mail(@blog).deliver
+    #   redirect_to blogs_path, notice: 'Blog was successfully created.'
+    # else
+    #   render :new
+    # end
   end
 
   def edit
