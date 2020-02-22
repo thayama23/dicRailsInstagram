@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :logged_in?, only: [:edit, :destroy]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -49,9 +50,15 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    # if logged_in? == true
+    #   @blog = Blog.find(params[:id])
+    # else
+    #   redirect_to new_user_path, notice: "ログインするか新規ユーザー設定後Blogをご使用下さい。"
+    # end
   end
 
   def update
+
     if @blog.update(blog_params)
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
@@ -60,6 +67,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+
     @blog.destroy
     redirect_to blogs_path, notice:"ブログを削除しました！"
   end
@@ -72,6 +80,12 @@ class BlogsController < ApplicationController
   end
 
   private
+  def logged_in?
+    unless current_user.present?
+      redirect_to new_user_path, notice: "ログインするか新規ユーザー設定後Blogをご使用下さい。"
+    end
+  end
+
   def blog_params
    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end

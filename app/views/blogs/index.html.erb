@@ -10,18 +10,41 @@
   </tr>
 <% @blogs.each do |blog| %>
   <tr>
-    <td><%= image_tag blog.user.photo.to_s%></td> 
+    <td><%= image_tag blog.user.photo.to_s%></td>
     <td><%= blog.user.name%></td>
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
     <td><%= image_tag blog.image.to_s %></td>
 
+  <% if logged_in? %>
+
     <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+
+    <% if blog.user_id == current_user.id %>
+      <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <% end %>
+
+
+
+   <% else %>
+     <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+   <% end %>
   </tr>
 <% end %>
 </table>
 
 <br>
+<div class = "new_blog_path">
 <%= link_to '新しくBlogを投稿する', new_blog_path %>
+</div>
+
+
+#<Blog:0x00007faa91534588
+ id: 15,
+ title: "NNNNN",
+ content: "MMMMM",
+ image: "DE2FC054-3546-4FF0-9790-AC17D16CF910.jpeg",
+ created_at: Thu, 20 Feb 2020 15:12:51 JST +09:00,
+ updated_at: Thu, 20 Feb 2020 15:12:51 JST +09:00,
+ user_id: 2>,

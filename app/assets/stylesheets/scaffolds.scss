@@ -11,6 +11,7 @@ body {
   background-image: image-url("cloud.jpg");
   background-position: center;
   height: 100%;
+  margin: 0;
 }
 
 p, ol, ul, td {
@@ -92,7 +93,7 @@ label {
 .container{
   min-height: 100%;
   position: relative;
-  background-color: black;
+  // background-color: black;
 }
 
 .main-header {
@@ -113,4 +114,8 @@ label {
   position: absolute;
   bottom: 0;
   width: 100%
+}
+
+.new_blog_path {
+  padding-bottom: 40px;
 }
