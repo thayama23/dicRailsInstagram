@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id) if current_user
   end
 
   def new
@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
-        BlogMailer.blog_mail(@blog).deliver ##
+        BlogMailer.blog_mail(@blog).deliver if Rails.env.development? ##
         redirect_to blogs_path, notice: "ブログを作成しました！"
       else
         render :new
