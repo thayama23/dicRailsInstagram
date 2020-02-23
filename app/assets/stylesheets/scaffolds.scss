@@ -99,11 +99,32 @@ label {
 .main-header {
   height: 40px;
   background-color: #00FFFF;
-  vertical-align: center;
+  // vertical-align: center;
 }
+
+// .navbar navbar-default {
+//   background-color: #00FFFF;
+// }
+
+.container-fluid {
+  background-color: #00FFFF;
+}
+
+// .navbar-header {
+//   background-color: #00FFFF;
+// }
+//
+// .navbar-toggle collapsed {
+//   background-color: #00FFFF;
+// }
+//
+// .collapse navbar-collapse {
+//   background-color: #00FFFF;
+// }
 
 .profile_logins {
   padding-top: 10px;
+  // background-color: #00FFFF;
 }
 
 .footer {
