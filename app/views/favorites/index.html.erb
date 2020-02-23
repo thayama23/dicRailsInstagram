@@ -1,0 +1,21 @@
+
+<h2><%= current_user.name %>のお気に入りブログリスト</h2>
+
+<table>
+  <tr>
+    <th>ユーザーフォト</th>
+    <th>ユーザー</th>
+    <!-- <th>タイトル</th>
+    <th>内容</th> -->
+    <th>写真投稿</th>
+  </tr>
+<% @favorite_blogs.each do |blog| %>
+  <tr>
+    <td><%= image_tag blog.user.photo.to_s%></td>
+    <td><%= blog.user.name%></td>
+    <!-- <td><%= blog.title %></td>
+    <td><%= blog.content %></td> -->
+    <td><%= image_tag blog.image.to_s %></td>
+  </tr>
+<% end %>
+</table>
