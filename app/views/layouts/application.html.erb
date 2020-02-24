@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -21,15 +23,15 @@
             </div>
 
             <div id="gnavi" class="collapse navbar-collapse">
-              <div class = "profile_logins">
+              <ul class = "profile_logins">
                 <% if logged_in? %>
-                  <%= link_to "Profile", user_path(current_user.id) %>
-                  <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+                  <li> <%= link_to "Profile", user_path(current_user.id) %> </li>
+                  <li> <%= link_to "Logout", session_path(current_user.id), method: :delete %> </li>
                 <% else %>
-                  <%= link_to "Sign up", new_user_path %>
-                  <%= link_to "Login", new_session_path %>
+                  <li> <%= link_to "Sign up", new_user_path %> </li>
+                  <li> <%= link_to "Login", new_session_path %> </li>
                 <% end %>
-              </div>
+              </ul>
             </div>
           </div>
         </nav>
@@ -38,7 +40,7 @@
       <%= yield %>
 
       <footer class ="footer">
-            <p>Copyright © 2020 Blog INC All RIGHTS RESERVED.</p>
+            <p class = "footer_text">Copyright © 2020 Blog INC All RIGHTS RESERVED.</p>
       </footer>
     </div>
   </body>

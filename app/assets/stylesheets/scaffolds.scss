@@ -92,39 +92,25 @@ label {
 
 .container{
   min-height: 100%;
+  width: 100%;
   position: relative;
+  padding: 0 0;
   // background-color: black;
 }
 
 .main-header {
   height: 40px;
-  background-color: #00FFFF;
+  // background-color: #00FFFF;
   // vertical-align: center;
 }
 
-// .navbar navbar-default {
-//   background-color: #00FFFF;
-// }
-
-.container-fluid {
+.navbar-default {
   background-color: #00FFFF;
 }
 
-// .navbar-header {
-//   background-color: #00FFFF;
-// }
-//
-// .navbar-toggle collapsed {
-//   background-color: #00FFFF;
-// }
-//
-// .collapse navbar-collapse {
-//   background-color: #00FFFF;
-// }
-
 .profile_logins {
   padding-top: 10px;
-  // background-color: #00FFFF;
+  margin-left: 0;
 }
 
 .footer {
@@ -135,6 +121,10 @@ label {
   position: absolute;
   bottom: 0;
   width: 100%
+}
+
+.footer_text {
+  padding-top: 10px
 }
 
 .new_blog_path {
