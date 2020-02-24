@@ -23,7 +23,7 @@
             </div>
 
             <div id="gnavi" class="collapse navbar-collapse">
-              <ul class = "profile_logins">
+              <ul class = "profile_logins clearfix">
                 <% if logged_in? %>
                   <li> <%= link_to "Profile", user_path(current_user.id) %> </li>
                   <li> <%= link_to "Logout", session_path(current_user.id), method: :delete %> </li>

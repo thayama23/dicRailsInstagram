@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  // margin-top: 0;
 }
 
 body {
@@ -109,8 +110,20 @@ label {
 }
 
 .profile_logins {
-  padding-top: 10px;
-  margin-left: 0;
+  padding-top: 15px;
+  padding-left: 0;
+}
+
+.profile_logins li {
+  float: left;
+  list-style: none;
+
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .footer {
